@@ -3,7 +3,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#4f46e5">
+  <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/5606/5606115.png">
   <title>EduVault - Private Knowledge Locker</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,6 +50,8 @@
       background-color: var(--vault-bg);
       color: var(--vault-text);
       transition: background-color 0.3s ease, color 0.3s ease;
+      overscroll-behavior-y: contain;
+      margin: 0;
     }
 
     .vault-card { background-color: var(--vault-card); border-color: var(--vault-border); }
@@ -54,42 +61,34 @@
     .vault-text { color: var(--vault-text); }
     .vault-text-muted { color: var(--vault-text-muted); }
 
-    ::-webkit-scrollbar {
-      width: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: var(--vault-border);
-      border-radius: 10px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: var(--vault-text-muted);
-    }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--vault-border); border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--vault-text-muted); }
     
-    .view-only-protected {
-      user-select: none;
-      -webkit-user-select: none;
+    .view-only-protected { user-select: none; -webkit-user-select: none; }
+
+    @supports (-webkit-touch-callout: none) {
+      .h-screen { height: -webkit-fill-available; }
     }
   </style>
 <script type="importmap">
 {
   "imports": {
-    "@google/genai": "https://esm.sh/@google/genai@^1.37.0",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
-    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "@google/genai": "https://esm.sh/@google/genai@1.37.0",
+    "react-dom": "https://esm.sh/react-dom@19.0.0",
+    "react": "https://esm.sh/react@19.0.0",
+    "lucide-react": "https://esm.sh/lucide-react@0.475.0",
     "pdfjs-dist": "https://esm.sh/pdfjs-dist@4.10.38",
-    "pdfjs-dist/build/pdf.worker.mjs": "https://esm.sh/pdfjs-dist@4.10.38/build/pdf.worker.mjs"
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/"
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
 </head>
 <body>
   <div id="root"></div>
-<script type="module" src="/index.tsx"></script>
+  <!-- This script tag is CRITICAL to load your app -->
+  <script type="module" src="./index.tsx"></script>
 </body>
 </html>
