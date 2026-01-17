@@ -1,7 +1,0 @@
-{
-  "name": "EduVault: Private Knowledge Locker",
-  "description": "A high-performance personal digital vault for organizing college notes, images, and documents with integrated Gemini AI for smart summarization and searching.",
-  "requestFramePermissions": [
-    "camera"
-  ]
-}
